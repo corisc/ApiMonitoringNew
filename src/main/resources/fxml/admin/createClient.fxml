@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="create_client_container" stylesheets="@../../Style/createClient.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.etc.apiMonitor.controllers.Admin.CreateClientController">
+   <Text layoutX="95.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create new Client Account" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   <VBox layoutX="14.0" layoutY="36.0" prefHeight="700.0" prefWidth="600.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="40.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+      <TextField fx:id="fName_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+      <TextField fx:id="lName_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail-Address:" />
+      <TextField fx:id="email_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+      <TextField fx:id="password_fld" />
+      <Button fx:id="create_client_btn" mnemonicParsing="false" text="Create New User" />
+      <Label fx:id="error_lbl" styleClass="error_lbl" />
+   </VBox>
+</AnchorPane>
