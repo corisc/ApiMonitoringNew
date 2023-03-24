@@ -4,6 +4,7 @@ import com.etc.apiMonitor.models.Model;
 import com.etc.apiMonitor.views.ClientMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,7 @@ public class ClientMenuController implements Initializable {
         dashboard_btn.setOnAction(event -> onDashboard());
         transaction_btn.setOnAction(event -> onTransactions());
         accounts_btn.setOnAction(event -> onAccounts());
+        logout_btn.setOnAction(event -> onLogout());
     }
 
     private void onTransactions() {
@@ -38,6 +40,14 @@ public class ClientMenuController implements Initializable {
 
     private void onAccounts() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.ACCOUNTS);
+    }
+
+    private void onLogout() {
+        //get Stage
+        Stage stage = (Stage) dashboard_btn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        //show Login window
+        Model.getInstance().getViewFactory().showLoginWindow();
     }
 
 }

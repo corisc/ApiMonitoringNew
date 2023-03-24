@@ -15,7 +15,14 @@ public class ClientsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Model.getInstance().getUsersItems().forEach(
-                client -> clients_listview.cellFactoryProperty().set(cellFactory));
+        initClientsList();
+        clients_listview.setItems(Model.getInstance().getUsers());
+        clients_listview.setCellFactory(e -> new ClientCellFactory());
+    }
+
+    private void initClientsList() {
+        if (Model.getInstance().getUsers().isEmpty()) {
+            Model.getInstance().setUsers();
+        }
     }
 }

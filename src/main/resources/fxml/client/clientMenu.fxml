@@ -5,11 +5,17 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Style/clientMenu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.etc.apiMonitor.controllers.Client.ClientMenuController">
     <AnchorPane prefHeight="730.0" prefWidth="160.0" styleClass="left_container">
-        <VBox prefHeight="80.0" prefWidth="160.0" styleClass="title_container" stylesheets="@../../Style/clientMenu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <Ellipse fill="WHITE" radiusX="20.0" radiusY="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MazeBank" />
+        <VBox prefHeight="150.0" prefWidth="160.0" styleClass="title_container" stylesheets="@../../Style/clientMenu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../images/vf-logo.png" />
+                </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="API Monitor" />
         </VBox>
         <VBox layoutX="40.0" layoutY="80.0" prefHeight="400.0" prefWidth="160.0" styleClass="menu_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
             <Button fx:id="dashboard_btn" mnemonicParsing="false" text="Dashboard" />

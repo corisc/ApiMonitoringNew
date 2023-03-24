@@ -27,7 +27,7 @@ public class DatabaseDriver {
     Client Section
      */
 
-    public ResultSet getUserData(String eMailAddress, String password) {
+    public ResultSet getUserData(String eMailAddress, String password) throws SQLException {
         Statement statement;
         ResultSet resultSet = null;
         try {
@@ -56,28 +56,16 @@ public class DatabaseDriver {
         return true;
     }
 
-    public ObservableList<Client> getAllUsersData() {
-        ObservableList<Client> users = FXCollections.observableArrayList();
+    public ResultSet getAllClientsData() {
+        Statement statement;
+        ResultSet resultSet = null;
         try {
-            String query = "SELECT * FROM client;";
-            Statement statement = this.conn.createStatement();
-
-            System.out.println(query);
-            ResultSet resultSet = statement.executeQuery(query);
-            statement.close();
-            while (resultSet.next()){
-                Client user = new Client(
-                        resultSet.getString("first_name"),
-                        resultSet.getString("last_name"),
-                        resultSet.getString("email_address"),
-                        LocalDate.parse(resultSet.getString("date_created"))
-                );
-                users.add(user);
-            }
-        } catch (SQLException e) {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM client;");
+        }catch (SQLException e){
             e.printStackTrace();
         }
-        return users;
+        return resultSet;
     }
 
 

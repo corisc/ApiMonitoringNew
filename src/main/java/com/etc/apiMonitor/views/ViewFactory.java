@@ -1,16 +1,22 @@
 package com.etc.apiMonitor.views;
 
 import com.etc.apiMonitor.controllers.Admin.AdminController;
+import com.etc.apiMonitor.controllers.Admin.ClientCellController;
 import com.etc.apiMonitor.controllers.Client.ClientController;
 import com.etc.apiMonitor.models.Client;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,6 +43,16 @@ public class ViewFactory {
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }
+
+    public AccountType getLoginAccountType() {
+        return loginAccountType;
+    }
+
+    public void setLoginAccountType(AccountType loginAccountType) {
+        this.loginAccountType = loginAccountType;
+    }
+
+
 
     /* Clients Views Section */
     public ObjectProperty<ClientMenuOptions> getClientSelectedMenuItem() {
@@ -109,8 +125,7 @@ public class ViewFactory {
             try {
                 clientsView = new FXMLLoader(getClass().getResource("/fxml/admin/clients.fxml")).load();
             } catch (IOException e) {
-                e.printSt:wq
-            ackTrace();
+                e.printStackTrace();
             }
         }
         return clientsView;
@@ -127,12 +142,6 @@ public class ViewFactory {
         return depositView;
     }
 
-    public ListView<Client> getClientListView() {
-        clientsListView = new ListView<>();
-        clientsListView.setCellFactory(new Callback);
-        return clientsListView;
-    }
-
     public void showAdminWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin/admin.fxml"));
         AdminController controller = new AdminController();
@@ -140,19 +149,30 @@ public class ViewFactory {
         createStage(loader);
     }
 
-    public AccountType getLoginAccountType() {
-        return loginAccountType;
-    }
 
-    public void setLoginAccountType(AccountType loginAccountType) {
-        this.loginAccountType = loginAccountType;
-    }
 
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         createStage(loader);
     }
 
+    public void showMessageWindow(String pAddress, String messageText) {
+        StackPane pane = new StackPane();
+        HBox hBox = new HBox(5);
+        hBox.setAlignment(Pos.CENTER);
+        Label sender = new Label(pAddress);
+        Label message = new Label(messageText);
+        hBox.getChildren().addAll(sender, message);
+        pane.getChildren().add(hBox);
+        Scene scene = new Scene(pane, 300, 100);
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Images/icon.png"))));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Message");
+        stage.setScene(scene);
+        stage.show();
+    }
     private void createStage(FXMLLoader loader) {
         Scene scene = null;
         try {
