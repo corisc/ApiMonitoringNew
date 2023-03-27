@@ -1,6 +1,6 @@
 package com.etc.apiMonitor.controllers.Client;
 
-import com.etc.apiMonitor.models.Transaction;
+import com.etc.apiMonitor.models.TestInstance;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
@@ -13,10 +13,10 @@ public class TransactionsCellController implements Initializable {
     public Label sender_lbl;
     public Label receiver_lbl;
     public Label amount_lbl;
-    private final Transaction transaction;
+    private final TestInstance testInstance;
 
-    public TransactionsCellController(Transaction transaction) {
-        this.transaction = transaction;
+    public TransactionsCellController(TestInstance testInstance) {
+        this.testInstance = testInstance;
     }
 
     @Override

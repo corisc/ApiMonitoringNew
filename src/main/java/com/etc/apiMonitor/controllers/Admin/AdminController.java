@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 public class AdminController implements Initializable {
     public BorderPane admin_parent;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Model.getInstance().getViewFactory().getAdminSelectedMenuItem().addListener(((observableValue, oldVal, newVal) -> {

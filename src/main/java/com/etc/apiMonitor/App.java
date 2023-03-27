@@ -14,12 +14,17 @@ public class App extends Application {
     }
     @Override
     public void start(Stage stage) {
-        if (checkDbDrivers()) {
+        if (checkDbDrivers() || checkAllDbTablesExist()) {
             Model.getInstance().getViewFactory().showLoginWindow();
         } else {
             Model.getInstance().getViewFactory().showErrorWindow();
         }
 
+    }
+
+    private boolean checkAllDbTablesExist() {
+        boolean exist = false;
+        return exist;
     }
 
     private static boolean checkDbDrivers() {

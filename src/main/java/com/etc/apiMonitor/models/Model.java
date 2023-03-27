@@ -17,8 +17,8 @@ public class Model {
     private final AccountType loginAccountType = AccountType.CLIENT;
     private boolean adminLoginSuccessFlag = false;
     private boolean clientLoginSuccessFlag = false;
-    private final ObservableList<Transaction> latestTransactions;
-    private final ObservableList<Transaction> allTransactions;
+    private final ObservableList<TestInstance> latestTestInstances;
+    private final ObservableList<TestInstance> allTestInstances;
 
     public ObservableList<Client> getUsers() {
         return users;
@@ -36,8 +36,8 @@ public class Model {
         //Client Data Section
         this.clientLoginSuccessFlag = false;
         //Admin Data Section
-        this.latestTransactions = FXCollections.observableArrayList();
-        this.allTransactions = FXCollections.observableArrayList();
+        this.latestTestInstances = FXCollections.observableArrayList();
+        this.allTestInstances = FXCollections.observableArrayList();
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
         this.users = FXCollections.observableArrayList();
@@ -105,7 +105,7 @@ public class Model {
 
     }
 
-    private void prepareTransactions(ObservableList<Transaction> transactions, int limit) {
+    private void prepareTransactions(ObservableList<TestInstance> testInstances, int limit) {
         /*ResultSet resultSet = databaseDriver.getTransactions(this.client.emailAddressProperty().get(), limit);
         try {
             while (resultSet.next()) {
@@ -124,11 +124,11 @@ public class Model {
 
     public void setAllTransactions() {
         //TODO: Define only for failed
-        prepareTransactions(this.allTransactions, -1);
+        prepareTransactions(this.allTestInstances, -1);
     }
 
-    public ObservableList<Transaction> getAllTransactions() {
-        return allTransactions;
+    public ObservableList<TestInstance> getAllTransactions() {
+        return allTestInstances;
     }
 
     public boolean isAdminLoginSuccessFlag() {
